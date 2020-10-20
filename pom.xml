@@ -34,10 +34,6 @@
 			<artifactId>h2</artifactId>
 			<scope>test</scope>
 		</dependency> -->
-<<<<<<< HEAD
-
-=======
->>>>>>> 041bf9b223f26dbd7f559428d61866c2409c0793
 
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
