@@ -35,7 +35,7 @@ public class AuthorizationServerConfig {
 				.redirectUri("http://localhost:8080/authorized")
 				.scope("message.read")
 				.scope("message.write")
-				.clientSettings(clientSettings -> clientSettings.requireUserConsent(true))
+				// .clientSettings(clientSettings -> clientSettings.requireUserConsent(true))
 				.build();
 		return new InMemoryRegisteredClientRepository(registeredClient);
 	}
