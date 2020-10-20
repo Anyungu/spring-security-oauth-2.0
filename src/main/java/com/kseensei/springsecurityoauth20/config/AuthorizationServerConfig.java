@@ -23,7 +23,7 @@ import java.util.UUID;
 @Import(OAuth2AuthorizationServerConfiguration.class)
 public class AuthorizationServerConfig {
 
-    // @formatter:off
+	// @formatter:off
 	@Bean
 	public RegisteredClientRepository registeredClientRepository() {
 		RegisteredClient registeredClient = RegisteredClient.withId(UUID.randomUUID().toString())
@@ -41,12 +41,12 @@ public class AuthorizationServerConfig {
 	}
 	// @formatter:on
 
-    @Bean
-    public KeyManager keyManager() {
-        return new StaticKeyGeneratingKeyManager();
-    }
+	@Bean
+	public KeyManager keyManager() {
+		return new StaticKeyGeneratingKeyManager();
+	}
 
-    // @formatter:off
+	// @formatter:off
 	@Bean
 	public UserDetailsService users() {
 		UserDetails user = User.withDefaultPasswordEncoder()
