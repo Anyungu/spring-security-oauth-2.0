@@ -90,7 +90,7 @@ public class AuthorizationServerConfig extends WebSecurityConfigurerAdapter {
 		.ignoring()
 		.antMatchers(
 			"/webjars/**", 
-			"/h2-console", 
+			"/h2-console/**", 
 			"/swagger-ui.html", 
 			"/authenticate",
 			"/authenticateuser", 
