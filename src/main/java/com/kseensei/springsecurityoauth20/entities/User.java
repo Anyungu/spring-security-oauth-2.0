@@ -2,29 +2,28 @@ package com.kseensei.springsecurityoauth20.entities;
 
 import java.util.Collection;
 
-import javax.persistence.CollectionTable;
 import javax.persistence.Column;
-import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 
-import org.hibernate.annotations.Fetch;
-import org.hibernate.annotations.FetchMode;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
 @Entity
 @Setter(value = AccessLevel.PUBLIC)
 @AllArgsConstructor
+@NoArgsConstructor
 @ToString
 public class User implements UserDetails {
     /**
@@ -41,10 +40,13 @@ public class User implements UserDetails {
 
     private String password;
 
+    @JsonProperty("account_non_expired")
     private Boolean accountNonExpired;
 
+    @JsonProperty("account_non_locked")
     private Boolean accountNonLocked;
 
+    @JsonProperty("credentials_non_expired")
     private Boolean credentialsNonExpired;
 
     private Boolean enabled;

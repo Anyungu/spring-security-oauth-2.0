@@ -1,0 +1,5 @@
+{"properties": [{
+  "name": "system-config",
+  "type": "com.kseensei.springsecurityoauth20.config.SystemConfig",
+  "description": "A description for 'system-config'"
+}]}
