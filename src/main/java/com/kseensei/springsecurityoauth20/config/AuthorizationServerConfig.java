@@ -85,9 +85,24 @@ public class AuthorizationServerConfig extends WebSecurityConfigurerAdapter {
 
 	@Override
 	public void configure(WebSecurity web) throws Exception {
-		web.ignoring().antMatchers("/webjars/**", "/h2-console", "/authenticate", "/authenticateuser", "/registeruser",
-				"/swagger-ui/index.html?url=/api-docs&validatorUrl=#/", "/swagger-ui/**", "/api-docs",
-				"/swagger-resources/**", "/swagger-resources", "/api/clients/createclient");
+		// @formatter:off
+		web
+		.ignoring()
+		.antMatchers(
+			"/webjars/**", 
+			"/h2-console", 
+			"/swagger-ui.html", 
+			"/authenticate",
+			"/authenticateuser", 
+			"/registeruser", 
+			"/swagger-ui/index.html?url=/api-docs&validatorUrl=#/",
+			"/swagger-ui/**", 
+			"/v3/api-docs/**", 
+			"/swagger-resources/**", 
+			"/swagger-resources",
+			"/api/clients/createclient"
+		);
+		// @formatter:on
 	}
 
 }
