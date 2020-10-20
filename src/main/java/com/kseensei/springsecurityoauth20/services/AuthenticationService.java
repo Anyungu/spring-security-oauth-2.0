@@ -2,7 +2,7 @@ package com.kseensei.springsecurityoauth20.services;
 
 import java.util.Optional;
 
-import com.kseensei.springsecurityoauth20.entity.User;
+import com.kseensei.springsecurityoauth20.entities.User;
 import com.kseensei.springsecurityoauth20.repositories.ClientRepository;
 import com.kseensei.springsecurityoauth20.repositories.UserRepository;
 

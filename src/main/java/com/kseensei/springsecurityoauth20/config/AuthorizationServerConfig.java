@@ -8,8 +8,11 @@ import com.kseensei.springsecurityoauth20.services.AuthenticationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Import;
+import org.springframework.core.annotation.Order;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
+import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.OAuth2AuthorizationServerConfiguration;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
@@ -22,6 +25,7 @@ import org.springframework.security.oauth2.server.authorization.client.InMemoryR
 import org.springframework.security.oauth2.server.authorization.client.RegisteredClient;
 import org.springframework.security.oauth2.server.authorization.client.RegisteredClientRepository;
 
+@Order
 @EnableWebSecurity
 @Import(OAuth2AuthorizationServerConfiguration.class)
 public class AuthorizationServerConfig extends WebSecurityConfigurerAdapter {
@@ -72,6 +76,18 @@ public class AuthorizationServerConfig extends WebSecurityConfigurerAdapter {
 	@Override
 	public void configure(AuthenticationManagerBuilder auth) throws Exception {
 		auth.authenticationProvider(daoAuthenticationProvider());
+	}
+
+	@Override
+	protected void configure(HttpSecurity http) throws Exception {
+		http.authorizeRequests().anyRequest().authenticated().and().httpBasic();
+	}
+
+	@Override
+	public void configure(WebSecurity web) throws Exception {
+		web.ignoring().antMatchers("/webjars/**", "/h2-console", "/authenticate", "/authenticateuser", "/registeruser",
+				"/swagger-ui/index.html?url=/api-docs&validatorUrl=#/", "/swagger-ui/**", "/api-docs",
+				"/swagger-resources/**", "/swagger-resources", "/api/clients/createclient");
 	}
 
 }
